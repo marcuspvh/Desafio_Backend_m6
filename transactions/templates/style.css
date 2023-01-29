@@ -1,0 +1,13 @@
+.container{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button{
+    cursor: pointer;
+    background-color: #858585;
+    color: #fff;
+}

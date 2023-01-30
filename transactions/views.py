@@ -4,7 +4,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 # from .serializers import handle_uploaded_file
 from rest_framework import generics
 from django.shortcuts import render, redirect
-from .models import Transactions, UploadFileForm
+from .models import Transactions, UploadFileForm, ModelFormWithFileField
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.http import HttpResponseRedirect
 import ipdb
@@ -24,9 +24,13 @@ def upload_file(request):
             form = UploadFileForm(request.POST, request.FILES)
             if form.is_valid():
                 file = request.FILES['file']
+                file_model = ModelFormWithFileField.objects.create(file_model='file')
+                # ipdb.set_trace()    
+                file_model.save()
 
             with open(request.FILES['file'].temporary_file_path(), 'r') as f:
-                for data_form_line in file:
+            
+                for data_form_line in file_model:
                     tipo = data_form_line[:1]
                     ano = data_form_line[1:5]
                     mes = data_form_line[5:7]

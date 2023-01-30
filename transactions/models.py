@@ -4,7 +4,7 @@ from django import forms
 
 
 class ModelFormWithFileField(models.Model):
-    file = models.FileField()
+    file_model = models.FileField(upload_to='uploads/')
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()

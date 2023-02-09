@@ -11,3 +11,36 @@ button{
     background-color: #858585;
     color: #fff;
 }
+
+h1{
+    color: aqua;
+}
+
+ul{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212529;
+    list-style-type: none;
+    padding: 0;
+
+}
+
+li{
+    width: 90%;
+    height: 49px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #121214;
+    border-radius: 4px ;
+    margin-top: 20px;
+    color: white;
+    list-style-type: none;
+    
+    
+}

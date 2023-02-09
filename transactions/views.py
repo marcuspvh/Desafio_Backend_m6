@@ -24,13 +24,17 @@ def upload_file(request):
             form = UploadFileForm(request.POST, request.FILES)
             if form.is_valid():
                 file = request.FILES['file']
-                file_model = ModelFormWithFileField.objects.create(file_model='file')
+                file_model = ModelFormWithFileField.objects.create(file_model=file)
                 # ipdb.set_trace()    
                 file_model.save()
 
-            with open(request.FILES['file'].temporary_file_path(), 'r') as f:
-            
-                for data_form_line in file_model:
+            CNAB_list = []
+
+            with open(f'uploads/{str(file_model.file_model)}', "r" ) as f:
+                for line in f:
+                    CNAB_list.append(line)
+
+                for data_form_line in CNAB_list:
                     tipo = data_form_line[:1]
                     ano = data_form_line[1:5]
                     mes = data_form_line[5:7]
@@ -64,22 +68,22 @@ def upload_file(request):
                         tipo = "DOC"
                     elif tipo == "9":
                         tipo = "Aluguel"
-                table_header = Transactions.objects.create(
-                tipo=tipo,
-                data=data,
-                valor=valor,
-                cpf=cpf,
-                cartao=cartao,
-                hora=horario,
-                dono=dono,
-                loja=loja,
-                )
-                table_header.save()
+                    table_header = Transactions.objects.create(
+                    tipo=tipo,
+                    data=data,
+                    valor=valor,
+                    cpf=cpf,
+                    cartao=cartao,
+                    hora=horario,
+                    dono=dono,
+                    loja=loja,
+                    )
+                    table_header.save()
                 
                 amount_acount_store = Transactions.objects.values(
                     "tipo", "valor", "data", "cpf", "hora", "dono", "loja"
                 )
-                saldo_total = 0
+                balance = 0
                 for operation in amount_acount_store:
                     if (
                         operation["tipo"] == "Boleto"

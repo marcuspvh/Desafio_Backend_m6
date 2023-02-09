@@ -4,19 +4,19 @@ from django import forms
 
 
 class ModelFormWithFileField(models.Model):
-    file_model = models.FileField(upload_to='uploads/')
+    file_model = models.FileField(upload_to='uploads')
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()
 
 class Transactions(models.Model):
-    tipo = models.IntegerField()
-    data = models.DateField()
-    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    tipo = models.CharField(max_length=13)
+    data = models.CharField(max_length=10)
+    valor = models.IntegerField()
     cpf = models.CharField(max_length=11)
-    cartão = models.CharField(max_length=20)
-    hora = models.TimeField()
-    representante = models.CharField(max_length=100)
+    cartao = models.CharField(max_length=20)
+    hora = models.CharField(max_length=10)
+    dono = models.CharField(max_length=100)
     loja = models.CharField(max_length=100)
     
 

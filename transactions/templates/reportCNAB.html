@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <h1>TESTE DE RENDERIZAÇÃO</h1>
-        <ul>
-            <li>{FILE.file}</li>
-        </ul>
+
+        <div>
+            <h1>RELATÓRIO DE MOVIMENTAÇÃO</h1>
+            <ul>
+                {% for elem in amount_acount_store %}
+                <li>Tipo: <p>{{elem.tipo}}</p></li>
+                <li>Data: <p>{{elem.data}}</p></li>
+                <li>Valor: <p>R$ {{elem.valor}},00</p></li>
+                <li>CPF: <p>{{elem.cpf}}</p></li>
+                <li>Hora: <p>{{elem.hora}}</p></li>
+                <li>Dono: <p>{{elem.dono}}</p></li>
+                <li>Loja: <p>{{elem.loja}}</p></li>
+            {% endfor %}
+            </ul>
+            <h1>Saldo total: R$ {{balance}},00</h1>
 
 
 
-    </div>
+        </div>
+
 </body>
 </html>

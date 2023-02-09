@@ -8,15 +8,51 @@
     <title>Document</title>
 </head>
 <body>
-    <div className="container">
+    <div 
+    style=
+    "
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    ">
         <h1>Upload CNAB</h1>
-        <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+        <form 
+        style=
+        "
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: whitesmoke;
+        margin-bottom: 20px
+        ;
+        "   
+        action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
             {{ form.file }}
           
             <!-- <input type="file" id="fileInput" /> -->
-            <button type="submit" >Enviar</button>
+            <button
+            style=
+            "
+            width: 70px;
+            height: 25px;
+            
+            background-color: rgb(227, 229, 230);
+            margin-top: 20px;
+            border-radius: 5px;
+            border: rgb(210, 212, 213);
+            border-style:groove ;
+
+            "
+            type="submit" >Enviar</button>
         </form>
         
     </div>

@@ -5,15 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./styler.css "> -->
     <title>Document</title>
 </head>
 
 <body>
 
-        <div>
+        <div style=
+        "
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        " >
             <h1>RELATÓRIO DE MOVIMENTAÇÃO</h1>
-            <ul>
+            <ul 
+            style=
+            "
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            list-style-type: none;
+            padding: 0;
+           
+            "
+            >
                 {% for elem in amount_acount_store %}
+                <div 
+                style=
+                "
+                width: 70%;
+                height: 90px;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                background-color: whitesmoke;    
+                border: 1px solid gray;    
+                margin-bottom: 10px;        
+                "
+                > 
                 <li>Tipo: <p>{{elem.tipo}}</p></li>
                 <li>Data: <p>{{elem.data}}</p></li>
                 <li>Valor: <p>R$ {{elem.valor}},00</p></li>
@@ -21,6 +60,7 @@
                 <li>Hora: <p>{{elem.hora}}</p></li>
                 <li>Dono: <p>{{elem.dono}}</p></li>
                 <li>Loja: <p>{{elem.loja}}</p></li>
+                </div>
             {% endfor %}
             </ul>
             <h1>Saldo total: R$ {{balance}},00</h1>
